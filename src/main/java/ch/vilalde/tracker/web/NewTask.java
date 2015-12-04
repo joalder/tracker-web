@@ -1,9 +1,12 @@
 package ch.vilalde.tracker.web;
 
 import ch.vilalde.tracker.web.domain.Project;
+import ch.vilalde.tracker.web.domain.Task;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionListener;
 
 /**
  * Bean to handle new task creation
@@ -12,19 +15,26 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class NewTask {
 
+    @ManagedProperty(value = "#{tracker}")
     private Tracker tracker;
-
-    private String name;
-    private int estimatedEffort;
+    private Task task = new Task();
     private Project project;
-    private String description;
+    private ActionListener reset;
 
-    public int getEstimatedEffort() {
-        return estimatedEffort;
+    public Tracker getTracker() {
+        return tracker;
     }
 
-    public void setEstimatedEffort(int estimatedEffort) {
-        this.estimatedEffort = estimatedEffort;
+    public void setTracker(Tracker tracker) {
+        this.tracker = tracker;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     public Project getProject() {
@@ -35,19 +45,14 @@ public class NewTask {
         this.project = project;
     }
 
-    public String getDescription() {
-        return description;
+    public void save() {
+        if (project != null && task.isValid()) {
+            project.addTask(task);
+            reset();
+        }
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void reset(){
+        task = new Task();
     }
 }

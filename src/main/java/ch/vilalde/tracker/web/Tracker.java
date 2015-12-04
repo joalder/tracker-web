@@ -19,33 +19,25 @@ public class Tracker {
 
 
     private ArrayList<Project> projects = new ArrayList<>();
-    private HashMap<Project, ArrayList<Task>> tasks = new HashMap<>();
 
     public Tracker() {
     }
 
-    public void addTask(Project project, Task task) {
-        if (tasks.containsKey(project)) {
-            ArrayList<Task> currentTaskList = tasks.get(project);
-            currentTaskList.add(task);
-        }
-    }
-
-    public ArrayList<Task> getTasks(Project project) {
-        if (tasks.containsKey(project)) {
-            return tasks.get(project);
-        } else {
-            FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Given project '" + project + "' does not exist!"));
-            return new ArrayList<>();
-        }
-    }
-
     public void addProject(Project project) {
-        if (!projects.contains(project)) {
+        if (project != null && !projects.contains(project)) {
             projects.add(project);
-            tasks.put(project, new ArrayList<>());
         } else {
             FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Project already exists!"));
         }
+    }
+
+    public ArrayList<Project> findProject(String query){
+        ArrayList<Project> results = new ArrayList<>();
+        for(Project project : projects){
+            if(project.getName().startsWith(query)){
+                results.add(project);
+            }
+        }
+        return results;
     }
 }

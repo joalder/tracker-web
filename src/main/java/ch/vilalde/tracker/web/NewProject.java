@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionListener;
 
 /**
  * Bean to handle project creation
@@ -14,8 +15,8 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class NewProject {
-    private String name;
-    private String color;
+
+    private Project project = new Project();
     @ManagedProperty(value = "#{tracker}")
     private Tracker tracker;
 
@@ -27,41 +28,27 @@ public class NewProject {
         this.tracker = tracker;
     }
 
-
-    public String getName() {
-        return name;
+    public Project getProject() {
+        return project;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public void clear(){
-        name = null;
-        color = null;
-    }
-
-    public Boolean isValid(){
-        return name != null && color != null;
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public void save() {
-        System.out.println("Trying to save project! Name: " + name + " Color: " + color);
-        if(isValid()) {
-            Project project = new Project(name, color);
+        System.out.println("Trying to save project! Name: " + project.getName() + " Color: " + project.getColor());
+
+        if(project.isValid()) {
             tracker.addProject(project);
-            clear();
             FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Project " + project.getName() + " added!"));
+            project = new Project();
         }else{
             FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Please fill all the fields"));
         }
+    }
+
+    public void reset(){
+        project = new Project();
     }
 }
