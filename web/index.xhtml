@@ -38,10 +38,7 @@
                 <p:outputLabel value="Color: "/>
                 <p:colorPicker id="color" value="#{newProject.color}"/>
 
-                <p:commandButton id="saveTask" type="submit" value="Save" process="@this" actionListener="#{newProject.save}">
-                    <!---<f:ajax execute="name color save" render="name color"/>-->
-                    <!--<f:ajax execute="@form" render="@form"/>-->
-                </p:commandButton>
+                <p:commandButton id="saveProject" value="Save" update="name color growl" process="name color" action="#{newProject.save}"/>
                 <p:commandButton id="cancel" type="reset" value="Cancel"/>
             </h:panelGrid>
         </h:form>

@@ -7,7 +7,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,7 +21,6 @@ public class Tracker {
     private ArrayList<Project> projects = new ArrayList<>();
     private HashMap<Project, ArrayList<Task>> tasks = new HashMap<>();
 
-    @Inject
     public Tracker() {
     }
 

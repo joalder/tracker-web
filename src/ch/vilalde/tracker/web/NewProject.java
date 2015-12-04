@@ -1,14 +1,12 @@
 package ch.vilalde.tracker.web;
 
 import ch.vilalde.tracker.web.domain.Project;
-import ch.vilalde.tracker.web.domain.Task;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import java.awt.*;
 
 /**
  * Bean to handle project creation
@@ -17,7 +15,8 @@ import java.awt.*;
 @SessionScoped
 public class NewProject {
     private String name;
-    private Color color;
+    private String color;
+    @ManagedProperty(value = "#{tracker}")
     private Tracker tracker;
 
     public Tracker getTracker() {
@@ -37,11 +36,11 @@ public class NewProject {
         this.name = name;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -55,6 +54,7 @@ public class NewProject {
     }
 
     public void save() {
+        System.out.println("Trying to save project! Name: " + name + " Color: " + color);
         if(isValid()) {
             Project project = new Project(name, color);
             tracker.addProject(project);

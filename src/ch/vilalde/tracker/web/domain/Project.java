@@ -1,15 +1,13 @@
 package ch.vilalde.tracker.web.domain;
 
-import java.awt.*;
-
 /**
  * Project domain POJO
  */
 public class Project {
     private String name;
-    private Color color;
+    private String color;
 
-    public Project(String name, Color color) {
+    public Project(String name, String color) {
         this.name = name;
         this.color = color;
     }
@@ -22,11 +20,11 @@ public class Project {
         this.name = name;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 }
