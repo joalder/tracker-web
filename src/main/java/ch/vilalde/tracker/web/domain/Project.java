@@ -43,4 +43,8 @@ public class Project {
     public boolean isValid() {
         return name != null && color != null;
     }
+
+    public String toString(){
+        return name;
+    }
 }

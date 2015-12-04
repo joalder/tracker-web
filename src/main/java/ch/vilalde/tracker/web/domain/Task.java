@@ -57,4 +57,8 @@ public class Task {
                 description != null && !description.equals("") &&
                 priority != null && !priority.equals("");
     }
+
+    public String toString(){
+        return title;
+    }
 }
