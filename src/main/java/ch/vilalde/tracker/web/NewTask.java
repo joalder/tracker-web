@@ -4,7 +4,6 @@ import ch.vilalde.tracker.web.domain.Project;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
 
 /**
  * Bean to handle new task creation
@@ -13,7 +12,6 @@ import javax.inject.Inject;
 @SessionScoped
 public class NewTask {
 
-    @Inject
     private Tracker tracker;
 
     private String name;
