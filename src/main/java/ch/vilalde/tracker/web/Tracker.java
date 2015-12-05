@@ -2,6 +2,7 @@ package ch.vilalde.tracker.web;
 
 import ch.vilalde.tracker.web.domain.Project;
 import ch.vilalde.tracker.web.domain.Task;
+import ch.vilalde.tracker.web.domain.User;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
@@ -18,8 +19,8 @@ import java.util.HashMap;
 @ApplicationScoped
 public class Tracker {
 
-
     private ArrayList<Project> projects = new ArrayList<>();
+    private ArrayList<User> users = new ArrayList<>();
 
     public Tracker() {
         Project project = new Project("Dummy Project", "FF0000");
@@ -31,6 +32,8 @@ public class Tracker {
         project.addTask(new Task("Task #1", 16, "Low", "Some text..."));
         project.addTask(new Task("Task #2", 1, "High", "Some more text..."));
         addProject(project);
+
+        users.add(new User("admin", "admin"));
     }
 
     public void addProject(Project project) {
@@ -49,6 +52,20 @@ public class Tracker {
             }
         }
         return results;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
+    }
+
+    public void addUser(User user){
+        if (user != null && !users.contains(user)){
+            users.add(user);
+        }
     }
 
     public ArrayList<Project> getProjects() {

@@ -11,7 +11,7 @@
 </h:head>
 
 <h:body>
-    <p:growl id="growl"/>
+    <p:growl id="growl" autoUpdate="true"/>
     <h:form>
         <p:menubar>
             <p:menuitem id="estimatedEffort" value="Estimated Effort"/>
@@ -23,6 +23,7 @@
                                  icon="fa fa-fw fa-folder-open"/>
                 <p:commandButton id="newTask" value="New Task" onclick="PF('newTask').show();"
                                  icon="fa fa-fw fa-pencil-square-o"/>
+                <p:commandButton id="logout" value="Logout" actionListener="#{login.logout}" rendered="#{login.loggedIn}" icon="fa fa-fw fa-close"/>
             </f:facet>
 
         </p:menubar>
