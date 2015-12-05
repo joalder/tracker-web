@@ -5,9 +5,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui" xmlns:P="http://java.sun.com/jsf/html">
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
-
+    <h:outputStylesheet name="css/style.css"/>
 </h:head>
 
 <h:body>
@@ -20,52 +20,99 @@
 
             <f:facet name="options">
                 <p:commandButton id="newProject" value="New Project" onclick="PF('newProj').show();"
-                                 icon="ui-icon-folder-open-1"/>
-                <p:commandButton id="newTask" value="New Task" onclick="PF('dialogTask').show();"
-                                 icon="ui-icon-bell-alt"/>
+                                 icon="fa fa-fw fa-folder-open"/>
+                <p:commandButton id="newTask" value="New Task" onclick="PF('newTask').show();"
+                                 icon="fa fa-fw fa-pencil-square-o"/>
             </f:facet>
 
         </p:menubar>
     </h:form>
 
-    <p:dialog header="New Project" widgetVar="newProj" modal="true">
-        <h3>Add a new Project</h3>
+    <p:dialog header="Add a new Project" widgetVar="newProj" modal="true">
         <h:form>
             <h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px">
                 <p:outputLabel value="Name: "/>
-                <p:inputText id="name" value="#{newProject.project.name}"/>
+                <p:inputText id="name" value="#{newProject.project.name}" required="true"/>
 
                 <p:outputLabel value="Color: "/>
-                <p:colorPicker id="color" value="#{newProject.project.color}"/>
+                <p:colorPicker id="color" value="#{newProject.project.color}" required="true"/>
 
-                <p:commandButton id="saveProject" value="Save" update="name color growl" process="name color"
-                                 action="#{newProject.save}" onsuccess="PF('newProj').hide()"/>
-                <p:commandButton id="cancel" actionListener="#{newProject.reset}" onclick="PF('newProf').hide()"
+                <p:commandButton id="saveProject" value="Save" update="@form growl" process="@form"
+                                 action="#{newProject.save}"/>
+                <p:commandButton id="cancel" action="#{newProject.reset}" onclick="PF('newProj').hide()"
                                  type="reset" value="Cancel"/>
             </h:panelGrid>
         </h:form>
     </p:dialog>
-    <p:dialog header="New Task" widgetVar="dialogTask" modal="true">
-        <h3>Add a new Task</h3>
+    <p:dialog header="Add a new Task" widgetVar="newTask" modal="true" height="70%">
         <h:form>
-            <h:panelGrid columns="2" cellpadding="5" style="margin-left: 20px">
+            <div class="ui-grid ui-grid-responsive" style="padding: 10px">
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-12">
+                        <!--<p:messages autoUpdate="true"/>-->
+                        <p:outputLabel/>
+                    </div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4">
+                        <p:outputLabel value="Title: "/>
+                    </div>
+                    <div class="ui-grid-col-8">
+                        <p:inputText id="title" value="#{newTask.task.title}" required="true"/>
+                    </div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4">
+                        <h:panelGroup>
+                            <p:outputLabel value="Project: "/>
+                            <p:commandButton onclick="PF('newProj').show();"
+                                             icon="fa fa-fw fa-plus"/>
+                        </h:panelGroup>
+                    </div>
+                    <div class="ui-grid-col-8">
+                        <p:autoComplete id="project" dropdown="true" forceSelection="true" required="true"
+                                        value="#{newTask.project}" completeMethod="#{tracker.findProject}"
+                                        converter="#{projectConverter}"/>
+                    </div>
+                </div>
 
-                <P:outputLabel value="Title: "/>
-                <p:inputText id="title" value="#{newTask.task.title}"/>
 
-                <p:outputLabel value="Project: "/>
-                <p:autoComplete id="project" dropdown="true" forceSelection="true" value="#{newTask.project}" completeMethod="#{tracker.findProject}" />
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4">
+                        <p:outputLabel value="Priority: "/>
+                    </div>
+                    <div class="ui-grid-col-8">
+                        <p:selectOneRadio id="console" value="#{newTask.task.priority}" required="true">
+                            <f:selectItem itemLabel="High" itemValue="High"/>
+                            <f:selectItem itemLabel="Medium" itemValue="Medium"/>
+                            <f:selectItem itemLabel="Low" itemValue="Low" icon="fa fa-fw fa-plus"/>
+                        </p:selectOneRadio>
+                    </div>
+                </div>
 
-                <p:outputLabel value="Estimated Effort (h): "/>
-                <p:spinner id="estimated-effort" value="#{newTask.task.effortEstimated}"/>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4">
+                        <p:outputLabel value="Estimated Effort (h): "/>
+                    </div>
+                    <div class="ui-grid-col-8">
+                        <p:spinner id="estimated-effort" value="#{newTask.task.effortEstimated}" required="true"/>
+                    </div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4">
+                        <p:outputLabel value="Description: "/>
+                    </div>
+                    <div class="ui-grid-col-8">
+                        <p:inputTextarea id="description" value="#{newTask.task.description}" required="true"/>
+                    </div>
+                </div>
+            </div>
 
-                <p:commandButton value="New Project" onclick="PF('newProj').show();"
-                                 icon="ui-icon-folder-open-1"/>
-                <p:commandButton id="saveTask" value="Save" update="title growl" process="title"
-                                 action="#{newTask.save}" onsuccess="PF('newTask').hide()"/>
-                <p:commandButton id="cancel-task" actionListener="#{newTask.reset}" onclick="PF('newTask').hide()"
-                                 type="reset" value="Cancel"/>
-            </h:panelGrid>
+
+            <p:commandButton id="saveTask" value="Save" update="@form growl" process="@form"
+                             action="#{newTask.save}"/>
+            <p:commandButton id="cancel-task" actionListener="#{newTask.reset}" onclick="PF('newTask').hide()"
+                             type="reset" value="Cancel"/>
         </h:form>
     </p:dialog>
 </h:body>

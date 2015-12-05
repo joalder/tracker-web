@@ -11,6 +11,16 @@ public class Task {
     private String priority;
     private String description;
 
+    public Task (){
+    }
+
+    public Task(String title, int effortEstimated, String priority, String description) {
+        this.title = title;
+        this.effortEstimated = effortEstimated;
+        this.priority = priority;
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -60,5 +70,30 @@ public class Task {
 
     public String toString(){
         return title;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (effortEstimated != task.effortEstimated) return false;
+        if (effortSpent != task.effortSpent) return false;
+        if (title != null ? !title.equals(task.title) : task.title != null) return false;
+        if (priority != null ? !priority.equals(task.priority) : task.priority != null) return false;
+        return !(description != null ? !description.equals(task.description) : task.description != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + effortEstimated;
+        result = 31 * result + effortSpent;
+        result = 31 * result + (priority != null ? priority.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
     }
 }

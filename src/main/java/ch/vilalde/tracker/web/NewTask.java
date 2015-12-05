@@ -3,9 +3,11 @@ package ch.vilalde.tracker.web;
 import ch.vilalde.tracker.web.domain.Project;
 import ch.vilalde.tracker.web.domain.Task;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionListener;
 
 /**
@@ -48,7 +50,10 @@ public class NewTask {
     public void save() {
         if (project != null && task.isValid()) {
             project.addTask(task);
+            FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Added task '" + task.getTitle() + "' to project '" + project.getName() + "'"));
             reset();
+        } else {
+            FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Please fill all the fields!"));
         }
     }
 

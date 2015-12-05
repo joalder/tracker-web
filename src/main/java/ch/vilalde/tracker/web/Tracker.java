@@ -4,6 +4,7 @@ import ch.vilalde.tracker.web.domain.Project;
 import ch.vilalde.tracker.web.domain.Task;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -13,14 +14,23 @@ import java.util.HashMap;
 /**
  * Data holder for projects and tasks
  */
-@ManagedBean
-@SessionScoped
+@ManagedBean(eager = true)
+@ApplicationScoped
 public class Tracker {
 
 
     private ArrayList<Project> projects = new ArrayList<>();
 
     public Tracker() {
+        Project project = new Project("Dummy Project", "FF0000");
+        project.addTask(new Task("Task #1", 10, "High", "Some text..."));
+        project.addTask(new Task("Task #2", 6, "Medium", "Some more text..."));
+        addProject(project);
+
+        project = new Project("Other Project", "00FF00");
+        project.addTask(new Task("Task #1", 16, "Low", "Some text..."));
+        project.addTask(new Task("Task #2", 1, "High", "Some more text..."));
+        addProject(project);
     }
 
     public void addProject(Project project) {
@@ -39,5 +49,9 @@ public class Tracker {
             }
         }
         return results;
+    }
+
+    public ArrayList<Project> getProjects() {
+        return projects;
     }
 }
