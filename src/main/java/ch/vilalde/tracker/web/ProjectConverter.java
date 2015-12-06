@@ -5,6 +5,7 @@ import ch.vilalde.tracker.web.domain.Project;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -15,7 +16,7 @@ import javax.faces.convert.FacesConverter;
  */
 //@FacesConverter(forClass = Project.class)
 @ManagedBean
-@ApplicationScoped
+@RequestScoped
 public class ProjectConverter implements Converter {
 
     @ManagedProperty(value = "#{tracker}")
