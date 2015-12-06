@@ -15,21 +15,26 @@
     <p:growl id="growl" autoUpdate="true"/>
     <ui:insert name="menu">
         <h:form>
-            <p:menubar>
-                <p:menuitem id="estimatedEffort" value="Estimated Effort"/>
-                <p:menuitem id="remainingEffort" value="Remaining Effort"/>
-                <p:menuitem id="priority" value="Priority"/>
-
-                <f:facet name="options">
+            <p:toolbar>
+                <f:facet name="left">
                     <p:commandButton id="newProject" value="New Project" onclick="PF('newProj').show();"
-                                     icon="fa fa-folder-open"/>
+                                     icon="fa fa-folder-open" rendered="#{login.loggedIn}"/>
                     <p:commandButton id="newTask" value="New Task" onclick="PF('newTask').show();"
-                                     icon="fa fa-pencil-square-o"/>
-                    <p:commandButton id="logout" value="Logout" actionListener="#{login.logout}"
-                                     rendered="#{login.loggedIn}" icon="fa fa-close"/>
+                                     icon="fa fa-pencil-square-o" rendered="#{login.loggedIn}"/>
+                    <p:commandButton action="about" ajax="false" value="About" icon="fa fa-question"/>
                 </f:facet>
 
-            </p:menubar>
+                <f:facet name="right">
+                    <p:inputText id="search-field" style="margin-right:10px" value="#{tracker.search}" placeholder="Search" rendered="#{login.loggedIn}"/>
+                    <p:commandButton id="search" actionListener="#{tracker.doSearch}" rendered="#{login.loggedIn}" icon="fa fa-search"/>
+                    <p:commandButton id="logout" value="Logout" actionListener="#{login.logout}"
+                                     rendered="#{login.loggedIn}" icon="fa fa-close"/>
+                    <p:commandButton id="login" value="Login" action="login?faces-redirect=true"
+                                     rendered="#{not login.loggedIn}" icon="fa fa-close"/>
+                    <p:defaultCommand target="search"/>
+                </f:facet>
+
+            </p:toolbar>
         </h:form>
     </ui:insert>
     <ui:insert name="content">

@@ -10,11 +10,31 @@ html {
     line-height: inherit !important;
 }
 
-.center {
-    text-align: center;
+.login, .register {
+    margin-left: 40px;
+    margin-right: 40px;
+
+}
+.login div, .register div {
+    text-align: right;
 }
 
-.login, .register {
-    margin-left: 20px;
-    margin-right: 20px;
+.login input, .register input {
+    width: 90%
+}
+
+.register {
+    position: relative;
+}
+
+fieldset.full-size {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.center {
+    text-align: center;
 }

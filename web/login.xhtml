@@ -5,7 +5,6 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="title">Tracker Web Login</ui:define>
-    <ui:define name="menu"></ui:define>
     <ui:define name="content">
     <div class="ui-grid ui-grid-responsive">
         <div class="ui-grid-row center">
@@ -16,7 +15,6 @@
         <div class="ui-grid-row center">
             <div class="ui-grid-col-12">
                 <h:form>
-                    <p:commandButton action="about" ajax="false" value="About" icon="fa fa-question"/>
                 </h:form>
             </div>
         </div>
@@ -56,7 +54,7 @@
                 </p:fieldset>
             </div>
             <div class="ui-grid-col-6 register">
-                <p:fieldset legend="New to Tracker? Register!" style="margin-top:20px">
+                <p:fieldset styleClass="full-size" legend="New to Tracker? Register!" style="margin-top:20px">
                     <h:form>
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-4">

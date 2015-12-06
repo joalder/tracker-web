@@ -21,6 +21,7 @@ public class Tracker {
 
     private ArrayList<Project> projects = new ArrayList<>();
     private ArrayList<User> users = new ArrayList<>();
+    private String search;
 
     public Tracker() {
         Project project = new Project("Dummy Project", "FF0000");
@@ -44,14 +45,28 @@ public class Tracker {
         }
     }
 
-    public ArrayList<Project> findProject(String query){
+    public ArrayList<Project> findProject(String query) {
         ArrayList<Project> results = new ArrayList<>();
-        for(Project project : projects){
-            if(project.getName().startsWith(query)){
+        for (Project project : projects) {
+            if (project.getName().startsWith(query)) {
                 results.add(project);
             }
         }
         return results;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void doSearch() {
+        if (search != null && !search.equals("")) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Searching for '" + search + "'"));
+        }
     }
 
     public ArrayList<User> getUsers() {
@@ -62,8 +77,8 @@ public class Tracker {
         this.users = users;
     }
 
-    public void addUser(User user){
-        if (user != null && !users.contains(user)){
+    public void addUser(User user) {
+        if (user != null && !users.contains(user)) {
             users.add(user);
         }
     }
