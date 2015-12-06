@@ -47,6 +47,11 @@ fieldset.full-size {
     top: 50px;
 }
 
+.panel-borderless.ui-panelgrid>*>tr,
+.panel-borderless.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+
 .projects {
 
 }

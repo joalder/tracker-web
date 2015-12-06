@@ -15,7 +15,7 @@
                     <p:colorPicker id="color" value="#{newProject.project.color}" required="true"/>
 
                     <p:commandButton id="saveProject" value="Save" update="@form growl" process="@form"
-                                     action="#{newProject.save}" />
+                                     action="#{newProject.save}"/>
                     <p:commandButton id="cancel" action="#{newProject.reset}" onclick="PF('newProj').hide()"
                                      type="reset" value="Cancel"/>
                 </h:panelGrid>
@@ -95,7 +95,8 @@
                         <div class="ui-grid-col-12">
                             <p:commandButton id="saveTask" value="Save" update="@form growl" process="@form"
                                              action="#{newTask.save}"/>
-                            <p:commandButton id="cancel-task" actionListener="#{newTask.reset}" onclick="PF('newTask').hide()"
+                            <p:commandButton id="cancel-task" actionListener="#{newTask.reset}"
+                                             onclick="PF('newTask').hide()"
                                              type="reset" value="Cancel"/>
                         </div>
                     </div>
@@ -106,15 +107,18 @@
             Sort by:
             <p:commandLink id="sortByStatus" action="#{tracker.sortByStatus}" update="projects" value="Status"/> |
             <p:commandLink id="sortByPriority" action="#{tracker.sortByPriority}" update="projects" value="Priority"/> |
-            <p:commandLink id="sortByEstimatedEffort" action="#{tracker.sortByEstimatedEffort}" update="projects" value="Estimated Effort"/> |
-            <p:commandLink id="sortBySpentEffort" action="#{tracker.sortBySpentEffort}" update="projects" value="Spent Effort"/>
+            <p:commandLink id="sortByEstimatedEffort" action="#{tracker.sortByEstimatedEffort}" update="projects"
+                           value="Estimated Effort"/> |
+            <p:commandLink id="sortBySpentEffort" action="#{tracker.sortBySpentEffort}" update="projects"
+                           value="Spent Effort"/>
+
             <div class="projects">
                 <ui:repeat value="#{tracker.projects}" var="project">
                     <div class="project">
                         <h2>#{project.name}</h2>
                         <ui:repeat value="#{project.tasks}" var="task" varStatus="status">
                             <div class="task size_#{project.getTaskSize(status.index)} #{task.status}" style="background-color: #{project.getTaskColor(status.index)};">
-                                <div class="title">#{task.title}</div>
+                                <p:outputLabel id="task" styleClass="title" value="#{task.title}"/>
                                 <div class="controls">
                                     <p:commandButton value="Open" action="#{task.open}" update="projects" rendered="#{task.closed}"/>
                                     <p:commandButton value="Close" action="#{task.close}" update="projects" rendered="#{not task.closed}"/>
@@ -123,6 +127,21 @@
                                         #{task.effortSpent} / #{task.effortEstimated}
                                     </div>
                                 </div>
+                                <p:overlayPanel for="task" showEvent="mouseover" hideEvent="mouseout" hideEffect="fade">
+                                    <p:panelGrid columns="2" cellpadding="5" styleClass="panel-borderless" >
+                                        <p:outputLabel value="Priority: "/>
+                                        <p:outputLabel value="#{task.priority}"/>
+
+                                        <p:outputLabel value="Estimated Effort:"/>
+                                        <p:outputLabel value="#{task.effortEstimated}"/>
+
+                                        <p:outputLabel value="Spent Effort:"/>
+                                        <p:outputLabel value="#{task.effortSpent}"/>
+
+                                        <p:outputLabel value="Description:"/>
+                                    </p:panelGrid>
+                                    <p:outputLabel value="#{task.description}"/>
+                                </p:overlayPanel>
                             </div>
                         </ui:repeat>
                     </div>
