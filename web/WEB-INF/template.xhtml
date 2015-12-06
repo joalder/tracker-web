@@ -15,7 +15,7 @@
     <p:growl id="growl" autoUpdate="true"/>
     <ui:insert name="menu">
         <h:form>
-            <p:toolbar>
+            <p:toolbar id="menu-toolbar">
                 <f:facet name="left">
                     <p:commandButton id="newProject" value="New Project" onclick="PF('newProj').show();"
                                      icon="fa fa-folder-open" rendered="#{login.loggedIn}"/>
@@ -37,6 +37,7 @@
                 </f:facet>
 
             </p:toolbar>
+            <p:sticky target="menu-toolbar" />
         </h:form>
     </ui:insert>
     <ui:insert name="content">
