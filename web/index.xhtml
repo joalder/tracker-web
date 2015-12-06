@@ -102,6 +102,10 @@
             </h:form>
         </p:dialog>
         <p:panel id="projects" class="#{tracker.currentView}">
+            Sort by:
+            <p:commandLink id="sortByPriority" action="#{tracker.sortByPriority}" update="projects" value="Priority"/> |
+            <p:commandLink id="sortByEstimatedEffort" action="#{tracker.sortByEstimatedEffort}" update="projects" value="Estimated Effort"/> |
+            <p:commandLink id="sortBySpentEffort" action="#{tracker.sortBySpentEffort}" update="projects" value="Spent Effort"/>
             <div class="projects">
                 <ui:repeat value="#{tracker.projects}" var="project">
                     <div class="project">

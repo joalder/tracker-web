@@ -29,7 +29,7 @@ public class Task {
         this.title = title;
     }
 
-    public int getEffortEstimated() {
+    public Integer getEffortEstimated() {
         return effortEstimated;
     }
 
@@ -37,7 +37,7 @@ public class Task {
         this.effortEstimated = effortEstimated;
     }
 
-    public int getEffortSpent() {
+    public Integer getEffortSpent() {
         return effortSpent;
     }
 
@@ -63,6 +63,18 @@ public class Task {
 
     public void addHour() {
         effortSpent += 1;
+    }
+
+    public Integer getPriorityAsInt() {
+        switch (priority) {
+            case "High":
+                return 1;
+            case "Low":
+                return -1;
+            case "Medium":
+            default:
+                return 0;
+        }
     }
 
     public boolean isValid() {

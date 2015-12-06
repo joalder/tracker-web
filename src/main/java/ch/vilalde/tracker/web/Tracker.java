@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -119,5 +120,44 @@ public class Tracker {
 
     public void switchToList() {
         currentView = "list";
+    }
+
+    public void sortByPriority() {
+        for (Project project : projects) {
+            project.getTasks().sort(new PriorityComparator());
+        }
+    }
+
+    public void sortByEstimatedEffort() {
+        for (Project project : projects) {
+            project.getTasks().sort(new EstimatedEffortComparator());
+        }
+    }
+
+    public void sortBySpentEffort() {
+        for (Project project : projects) {
+            project.getTasks().sort(new SpentEffortComparator());
+        }
+    }
+
+    public class PriorityComparator implements Comparator<Task> {
+        @Override
+        public int compare(Task t1, Task t2) {
+            return t1.getPriorityAsInt().compareTo(t2.getPriorityAsInt()) * -1;
+        }
+    }
+
+    public class EstimatedEffortComparator implements Comparator<Task> {
+        @Override
+        public int compare(Task t1, Task t2) {
+            return t1.getEffortEstimated().compareTo(t2.getEffortEstimated()) * -1;
+        }
+    }
+
+    public class SpentEffortComparator implements Comparator<Task> {
+        @Override
+        public int compare(Task t1, Task t2) {
+            return t1.getEffortSpent().compareTo(t2.getEffortSpent()) * -1;
+        }
     }
 }
