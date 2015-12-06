@@ -57,7 +57,7 @@ fieldset.full-size {
     width: 496px;
 }
 
-.projects .project .task {
+.treemap .projects .project .task {
     float: left;
     margin-right: 2px;
     margin-bottom: 2px;
@@ -65,13 +65,13 @@ fieldset.full-size {
     color: black;
 }
 
-.task .title {
+.treemap .task .title {
     float: left;
     padding: 10px;
     font-weight: bold;
 }
 
-.task .controls {
+.treemap .task .controls {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -81,33 +81,64 @@ fieldset.full-size {
     display: none;
 }
 
-.task:hover .controls {
+.treemap .task:hover .controls {
     display: block;
 }
 
-.task.size_4 {
+.treemap .task.size_4 {
     width: 246px;
     height: 246px;
 }
 
-.task.size_2 {
+.treemap .task.size_2 {
     width: 122px;
     height: 122px;
 }
 
-.task.size_1 {
+.treemap .task.size_1 {
     width: 60px;
     height: 60px;
 }
 
-.task.size_4 .title {
+.treemap .task.size_4 .title {
     font-size: 24px;
 }
 
-.task.size_2 .title {
+.treemap .task.size_2 .title {
     font-size: 18px;
 }
 
-.task.size_1 .title {
+.treemap .task.size_1 .title {
     font-size: 10px;
+}
+
+.treemap .task .effort {
+    display: inline-block;
+}
+
+.list .task {
+    margin-bottom: 10px;
+    position: relative;
+    color: black;
+}
+
+.list .task .title {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.list .task .controls {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+}
+
+.list .task .effort {
+    display: inline-block;
+    width: 40px;
+    text-align: right;
 }

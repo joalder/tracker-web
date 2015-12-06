@@ -22,6 +22,7 @@ public class Tracker {
     private ArrayList<Project> projects = new ArrayList<>();
     private ArrayList<User> users = new ArrayList<>();
     private String search;
+    private String currentView = "treemap";
 
     public Tracker() {
         Project project = new Project("Dummy Project", "2c538d");
@@ -98,5 +99,25 @@ public class Tracker {
 
     public ArrayList<Project> getProjects() {
         return projects;
+    }
+
+    public String getCurrentView() {
+        return currentView;
+    }
+
+    public void switchCurrentView() {
+        if (currentView.equals("treemap")) {
+            switchToList();
+        } else {
+            switchToTreeMap();
+        }
+    }
+
+    public void switchToTreeMap() {
+        currentView = "treemap";
+    }
+
+    public void switchToList() {
+        currentView = "list";
     }
 }

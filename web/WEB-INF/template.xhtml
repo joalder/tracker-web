@@ -21,6 +21,8 @@
                                      icon="fa fa-folder-open" rendered="#{login.loggedIn}"/>
                     <p:commandButton id="newTask" value="New Task" onclick="PF('newTask').show();"
                                      icon="fa fa-pencil-square-o" rendered="#{login.loggedIn}"/>
+                    <p:commandButton id="switchView" value="Switch View" action="#{tracker.switchCurrentView}"
+                                     icon="fa fa-table" rendered="#{login.loggedIn}" update="projects"/>
                     <p:commandButton action="about" ajax="false" value="About" icon="fa fa-question"/>
                 </f:facet>
 

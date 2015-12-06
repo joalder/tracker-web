@@ -99,12 +99,9 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </h:form>
         </p:dialog>
-        <p:panel id="projects">
+        <p:panel id="projects" class="#{tracker.currentView}">
             <div class="projects">
                 <ui:repeat value="#{tracker.projects}" var="project">
                     <div class="project">
@@ -114,7 +111,9 @@
                                 <div class="title">#{task.title}</div>
                                 <div class="controls">
                                     <p:commandButton value="+1h" action="#{task.addHour}" update="projects" />
-                                    #{task.effortSpent} / #{task.effortEstimated}
+                                    <div class="effort">
+                                        #{task.effortSpent} / #{task.effortEstimated}
+                                    </div>
                                 </div>
                             </div>
                         </ui:repeat>
