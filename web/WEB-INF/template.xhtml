@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputStylesheet name="css/style.css"/>
+    <title><ui:insert name="title">Tracker Web</ui:insert></title>
+</h:head>
+
+<h:body>
+    <p:growl id="growl" autoUpdate="true"/>
+    <ui:insert name="menu">
+        <h:form>
+            <p:menubar>
+                <p:menuitem id="estimatedEffort" value="Estimated Effort"/>
+                <p:menuitem id="remainingEffort" value="Remaining Effort"/>
+                <p:menuitem id="priority" value="Priority"/>
+
+                <f:facet name="options">
+                    <p:commandButton id="newProject" value="New Project" onclick="PF('newProj').show();"
+                                     icon="fa fa-folder-open"/>
+                    <p:commandButton id="newTask" value="New Task" onclick="PF('newTask').show();"
+                                     icon="fa fa-pencil-square-o"/>
+                    <p:commandButton id="logout" value="Logout" actionListener="#{login.logout}"
+                                     rendered="#{login.loggedIn}" icon="fa fa-close"/>
+                </f:facet>
+
+            </p:menubar>
+        </h:form>
+    </ui:insert>
+    <ui:insert name="content">
+
+    </ui:insert>
+    <ui:insert name="footer">
+
+    </ui:insert>
+</h:body>
+</html>

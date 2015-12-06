@@ -1,89 +1,100 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition template="WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <h:outputStylesheet name="css/style.css"/>
-</h:head>
 
-<h:body>
-    <p:growl id="growl" autoUpdate="true"/>
-
+    <ui:define name="title">Tracker Web Login</ui:define>
+    <ui:define name="menu"></ui:define>
+    <ui:define name="content">
     <div class="ui-grid ui-grid-responsive">
-        <div class="ui-grid-row">
-            <div class="ui-grid-col-6 login">
-                <h:form>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6">
-                            <h2>Login</h2>
-                        </div>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6">
-                            <p:outputLabel value="Username: "/>
-                            <p:outputLabel value="#{login.welcomeMessage}"/>
-                        </div>
-                        <div class="ui-grid-col-6">
-                            <p:inputText id="user" value="#{login.user.name}" required="true"/>
-                        </div>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6">
-                            <p:outputLabel value="Password: "/>
-                        </div>
-                        <div class="ui-grid-col-6">
-                            <p:password id="password" value="#{login.user.password}" required="true"/>
-                        </div>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6">
-                        </div>
-                        <div class="ui-grid-col-6">
-                            <p:commandButton value="Login" update="@form growl" process="@form" ajax="false" actionListener="#{login.login}"/>
-                        </div>
-                    </div>
-                </h:form>
+        <div class="ui-grid-row center">
+            <div class="ui-grid-col-12">
+                <h1>Tracker Login</h1>
             </div>
-            <div class="ui-grid-col-6 register">
+        </div>
+        <div class="ui-grid-row center">
+            <div class="ui-grid-col-12">
                 <h:form>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6">
-                            <h2>Register</h2>
-                        </div>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6">
-                            <p:outputLabel value="Username: "/>
-                            <p:outputLabel value="#{login.welcomeMessage}"/>
-                        </div>
-                        <div class="ui-grid-col-6">
-                            <p:inputText id="user-register" value="#{login.user.name}" required="true"/>
-                        </div>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6">
-                            <p:outputLabel value="Password: "/>
-                        </div>
-                        <div class="ui-grid-col-6">
-                            <p:password id="password-register" value="#{login.user.password}" required="true"/>
-                        </div>
-                    </div>
-                    <div class="ui-grid-row">
-                        <div class="ui-grid-col-6">
-                        </div>
-                        <div class="ui-grid-col-6">
-                            <p:commandButton value="register" actionListener="#{login.register}" ajax="false" update="@form growl"
-                                             process="@form"/>
-                        </div>
-                    </div>
+                    <p:commandButton action="about" ajax="false" value="About" icon="fa fa-question"/>
                 </h:form>
             </div>
         </div>
-    </div>
+        <div class="ui-grid-row ui-helper-clearfix">
+            <div class="ui-grid-col-6 login">
+                <p:fieldset legend="Already a User? Login!" style="margin-top:20px">
+                    <h:form>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-4">
+                                <p:outputLabel value="Username: "/>
+                                <p:outputLabel value="#{login.welcomeMessage}"/>
+                            </div>
+                            <div class="ui-grid-col-8">
+                                <p:inputText id="user" value="#{login.user.name}" required="true"/>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-4">
+                                <p:outputLabel value="Password: "/>
+                            </div>
+                            <div class="ui-grid-col-8">
+                                <p:password id="password" value="#{login.user.password}" required="true"/>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12">
+                                <p>Forgot your password? <p:commandLink actionListener="#{login.reset}" value="Reset here!"/></p>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12 center">
+                                <p:commandButton value="Login" update="@form growl" process="@form" ajax="false"
+                                                 actionListener="#{login.login}"/>
+                            </div>
+                        </div>
+                    </h:form>
+                </p:fieldset>
+            </div>
+            <div class="ui-grid-col-6 register">
+                <p:fieldset legend="New to Tracker? Register!" style="margin-top:20px">
+                    <h:form>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-4">
+                                <p:outputLabel value="Username: "/>
+                                <p:outputLabel value="#{login.welcomeMessage}"/>
+                            </div>
+                            <div class="ui-grid-col-8">
+                                <p:inputText id="user-register" value="#{login.user.name}" required="true"/>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-4">
+                                <p:outputLabel value="Password: "/>
+                            </div>
+                            <div class="ui-grid-col-8">
+                                <p:password id="password-register" value="#{login.user.password}" required="true"/>
+                            </div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-4">
+                                <p:outputLabel value="E-Mail: "/>
+                            </div>
+                            <div class="ui-grid-col-8">
+                                <p:password id="email" value="#{login.user.email}" required="true"/>
+                            </div>
+                        </div>
 
-</h:body>
-</html>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12 center">
+                                <p:commandButton value="Register" actionListener="#{login.register}" ajax="false"
+                                                 update="@form growl"
+                                                 process="@form"/>
+                            </div>
+                        </div>
+                    </h:form>
+                </p:fieldset>
+            </div>
+        </div>
+    </div>
+    </ui:define>
+</ui:composition>

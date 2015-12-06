@@ -6,6 +6,7 @@ package ch.vilalde.tracker.web.domain;
 public class User {
     private String name;
     private String password;
+    private Object email;
 
     public User() {
     }
@@ -53,5 +54,13 @@ public class User {
 
     public boolean isValid() {
         return name != null && !name.equals("") && password != null && !password.equals("");
+    }
+
+    public void setEmail(Object email) {
+        this.email = email;
+    }
+
+    public Object getEmail() {
+        return email;
     }
 }

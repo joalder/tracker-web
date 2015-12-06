@@ -1,3 +1,20 @@
+html {
+    font-family: Arial,sans-serif;
+}
+
 .ui-grid-row {
     padding-bottom: 10px;
+}
+
+.fa {
+    line-height: inherit !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.login, .register {
+    margin-left: 20px;
+    margin-right: 20px;
 }
