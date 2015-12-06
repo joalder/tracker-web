@@ -27,6 +27,14 @@ public class Tracker {
         Project project = new Project("Dummy Project", "FF0000");
         project.addTask(new Task("Task #1", 10, "High", "Some text..."));
         project.addTask(new Task("Task #2", 6, "Medium", "Some more text..."));
+        project.addTask(new Task("Task #3", 11, "High", "Some text..."));
+        project.addTask(new Task("Task #4", 13, "Medium", "Some more text..."));
+        project.addTask(new Task("Task #5", 5, "High", "Some text..."));
+        project.addTask(new Task("Task #6", 2, "Medium", "Some more text..."));
+        project.addTask(new Task("Task #7", 4, "High", "Some text..."));
+        project.addTask(new Task("Task #8", 8, "Medium", "Some more text..."));
+        project.addTask(new Task("Task #9", 3, "High", "Some text..."));
+        project.addTask(new Task("Task #10", 15, "Medium", "Some more text..."));
         addProject(project);
 
         project = new Project("Other Project", "00FF00");

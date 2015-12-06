@@ -38,3 +38,34 @@ fieldset.full-size {
 .center {
     text-align: center;
 }
+
+.projects {
+
+}
+
+.projects .project {
+    float: left;
+    margin-right: 20px;
+    width: 656px;
+}
+
+.projects .project .task {
+    float: left;
+    margin-right: 2px;
+    margin-bottom: 2px;
+}
+
+.task.size_4 {
+    width: 326px;
+    height: 326px;
+}
+
+.task.size_2 {
+    width: 162px;
+    height: 162px;
+}
+
+.task.size_1 {
+    width: 80px;
+    height: 80px;
+}

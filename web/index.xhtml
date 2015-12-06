@@ -91,5 +91,16 @@
                                  type="reset" value="Cancel"/>
             </h:form>
         </p:dialog>
+        <div class="projects">
+            <ui:repeat value="#{tracker.projects}" var="project">
+                <div class="project">
+                    <ui:repeat value="#{project.tasks}" var="task" varStatus="status">
+                        <div class="task size_#{project.getTaskSize(status.index)}" style="background-color: #{project.getTaskColor(status.index)};">
+                            #{task.title} #{status.index}
+                        </div>
+                    </ui:repeat>
+                </div>
+            </ui:repeat>
+        </div>
     </ui:define>
 </ui:composition>

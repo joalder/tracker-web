@@ -1,5 +1,6 @@
 package ch.vilalde.tracker.web.domain;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -32,6 +33,22 @@ public class Project {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public int getTaskSize(int index) {
+        if (index < 2) {
+            return 4;
+        } else if (index < 10) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+
+    public String getTaskColor(int index) {
+        Color projectColor = Color.decode("#" + color);
+        Color taskColor = new Color(projectColor.getRed(), projectColor.getGreen(), projectColor.getBlue(), 55 + getTaskSize(index) * 50);
+        return String.format("rgba(%d, %d, %d, %f)", taskColor.getRed(), taskColor.getGreen(), taskColor.getBlue(), taskColor.getAlpha() / 255.0);
     }
 
     public ArrayList<Task> getTasks() {
