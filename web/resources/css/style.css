@@ -35,6 +35,10 @@ fieldset.full-size {
     left: 0;
 }
 
+.clearfix {
+    clear: both;
+}
+
 .center {
     text-align: center;
 }
@@ -57,12 +61,28 @@ fieldset.full-size {
     float: left;
     margin-right: 2px;
     margin-bottom: 2px;
+    position: relative;
+    color: black;
 }
 
 .task .title {
     float: left;
     padding: 10px;
     font-weight: bold;
+}
+
+.task .controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 10px;
+    display: none;
+}
+
+.task:hover .controls {
+    display: block;
 }
 
 .task.size_4 {

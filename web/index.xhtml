@@ -104,17 +104,24 @@
 
             </h:form>
         </p:dialog>
-        <div class="projects">
-            <ui:repeat value="#{tracker.projects}" var="project">
-                <div class="project">
-                    <h2>#{project.name}</h2>
-                    <ui:repeat value="#{project.tasks}" var="task" varStatus="status">
-                        <div class="task size_#{project.getTaskSize(status.index)}" style="background-color: #{project.getTaskColor(status.index)};">
-                            <div class="title">#{task.title}</div>
-                        </div>
-                    </ui:repeat>
-                </div>
-            </ui:repeat>
-        </div>
+        <p:panel id="projects">
+            <div class="projects">
+                <ui:repeat value="#{tracker.projects}" var="project">
+                    <div class="project">
+                        <h2>#{project.name}</h2>
+                        <ui:repeat value="#{project.tasks}" var="task" varStatus="status">
+                            <div class="task size_#{project.getTaskSize(status.index)}" style="background-color: #{project.getTaskColor(status.index)};">
+                                <div class="title">#{task.title}</div>
+                                <div class="controls">
+                                    <p:commandButton value="+1h" action="#{task.addHour}" update="projects" />
+                                    #{task.effortSpent} / #{task.effortEstimated}
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </ui:repeat>
+            </div>
+            <div class="clearfix"></div>
+        </p:panel>
     </ui:define>
 </ui:composition>

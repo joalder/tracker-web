@@ -61,6 +61,10 @@ public class Task {
         this.description = description;
     }
 
+    public void addHour() {
+        effortSpent += 1;
+    }
+
     public boolean isValid() {
         return title != null && !title.equals("") &&
                 effortEstimated != 0 &&
