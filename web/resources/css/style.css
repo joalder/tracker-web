@@ -129,6 +129,7 @@ fieldset.full-size {
     margin-bottom: 10px;
     position: relative;
     color: black;
+    padding: 8px;
 }
 
 .list .task .title {
@@ -139,9 +140,9 @@ fieldset.full-size {
 
 .list .task .controls {
     position: absolute;
-    top: 3px;
-    right: 5px;
-    bottom: 3px;
+    top: 10px;
+    right: 8px;
+    bottom: 0;
     font-size: 12px;
 }
 
