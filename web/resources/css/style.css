@@ -139,10 +139,9 @@ fieldset.full-size {
 
 .list .task .controls {
     position: absolute;
-    padding: 10px;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    top: 3px;
+    right: 5px;
+    bottom: 3px;
     font-size: 12px;
 }
 
