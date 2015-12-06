@@ -1,6 +1,7 @@
 package ch.vilalde.tracker.web;
 
 import ch.vilalde.tracker.web.domain.Project;
+import org.primefaces.context.RequestContext;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -43,6 +44,7 @@ public class NewProject {
             tracker.addProject(project);
             FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Project " + project.getName() + " added!"));
             project = new Project();
+            RequestContext.getCurrentInstance().execute("PF('newProj').hide()");
         }else{
             FacesContext.getCurrentInstance().addMessage("", new FacesMessage("Please fill all the fields"));
         }

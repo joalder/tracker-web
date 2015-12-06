@@ -6,9 +6,9 @@ package ch.vilalde.tracker.web.domain;
 public class Task {
 
     private String title;
-    private int effortEstimated;
-    private int effortSpent;
-    private String priority;
+    private int effortEstimated = 1;
+    private int effortSpent = 0;
+    private String priority = "Medium";
     private String description;
 
     public Task (){

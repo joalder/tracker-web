@@ -14,7 +14,7 @@
                     <p:colorPicker id="color" value="#{newProject.project.color}" required="true"/>
 
                     <p:commandButton id="saveProject" value="Save" update="@form growl" process="@form"
-                                     action="#{newProject.save}"/>
+                                     action="#{newProject.save}" />
                     <p:commandButton id="cancel" action="#{newProject.reset}" onclick="PF('newProj').hide()"
                                      type="reset" value="Cancel"/>
                 </h:panelGrid>
@@ -82,13 +82,26 @@
                             <p:inputTextarea id="description" value="#{newTask.task.description}" required="true"/>
                         </div>
                     </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-4">
+                            <p:outputLabel value="Add Another: "/>
+                        </div>
+                        <div class="ui-grid-col-8">
+                            <p:inputSwitch id="another" value="#{newTask.another}" required="true"/>
+                        </div>
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-12">
+                            <p:commandButton id="saveTask" value="Save" update="@form growl" process="@form"
+                                             action="#{newTask.save}"/>
+                            <p:commandButton id="cancel-task" actionListener="#{newTask.reset}" onclick="PF('newTask').hide()"
+                                             type="reset" value="Cancel"/>
+                        </div>
+                    </div>
                 </div>
 
 
-                <p:commandButton id="saveTask" value="Save" update="@form growl" process="@form"
-                                 action="#{newTask.save}"/>
-                <p:commandButton id="cancel-task" actionListener="#{newTask.reset}" onclick="PF('newTask').hide()"
-                                 type="reset" value="Cancel"/>
+
             </h:form>
         </p:dialog>
         <div class="projects">
