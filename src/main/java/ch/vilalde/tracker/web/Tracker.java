@@ -24,7 +24,7 @@ public class Tracker {
     private String search;
 
     public Tracker() {
-        Project project = new Project("Dummy Project", "FF0000");
+        Project project = new Project("Dummy Project", "2c538d");
         project.addTask(new Task("Task #1", 10, "High", "Some text..."));
         project.addTask(new Task("Task #2", 6, "Medium", "Some more text..."));
         project.addTask(new Task("Task #3", 11, "High", "Some text..."));
@@ -35,9 +35,14 @@ public class Tracker {
         project.addTask(new Task("Task #8", 8, "Medium", "Some more text..."));
         project.addTask(new Task("Task #9", 3, "High", "Some text..."));
         project.addTask(new Task("Task #10", 15, "Medium", "Some more text..."));
+        project.addTask(new Task("Task #11", 6, "Medium", "Some more text..."));
+        project.addTask(new Task("Task #12", 4, "High", "Some text..."));
+        project.addTask(new Task("Task #13", 8, "Medium", "Some more text..."));
+        project.addTask(new Task("Task #14", 10, "High", "Some text..."));
+        project.addTask(new Task("Task #15", 12, "Medium", "Some more text..."));
         addProject(project);
 
-        project = new Project("Other Project", "00FF00");
+        project = new Project("Other Project", "a32733");
         project.addTask(new Task("Task #1", 16, "Low", "Some text..."));
         project.addTask(new Task("Task #2", 1, "High", "Some more text..."));
         addProject(project);

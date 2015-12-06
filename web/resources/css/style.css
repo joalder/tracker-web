@@ -55,6 +55,12 @@ fieldset.full-size {
     margin-bottom: 2px;
 }
 
+.task .title {
+    float: left;
+    padding: 10px;
+    font-weight: bold;
+}
+
 .task.size_4 {
     width: 326px;
     height: 326px;
@@ -68,4 +74,16 @@ fieldset.full-size {
 .task.size_1 {
     width: 80px;
     height: 80px;
+}
+
+.task.size_4 .title {
+    font-size: 24px;
+}
+
+.task.size_2 .title {
+    font-size: 18px;
+}
+
+.task.size_1 .title {
+    font-size: 10px;
 }
