@@ -10,6 +10,7 @@ public class Task {
     private int effortSpent = 0;
     private String priority = "Medium";
     private String description;
+    private Boolean closed = false;
 
     public Task (){
     }
@@ -59,6 +60,22 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void close() {
+        closed = true;
+    }
+
+    public void open() {
+        closed = false;
+    }
+
+    public Boolean getClosed() {
+        return closed;
+    }
+
+    public String getStatus() {
+        return closed ? "closed" : "open";
     }
 
     public void addHour() {
