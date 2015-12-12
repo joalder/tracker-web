@@ -14,7 +14,7 @@
                     <p:outputLabel value="Color: "/>
                     <p:colorPicker id="color" value="#{newProject.project.color}" required="true"/>
 
-                    <p:commandButton id="saveProject" value="Save" update="@form growl" process="@form"
+                    <p:commandButton id="saveProject" value="Save" update="@form growl projects" process="@form"
                                      action="#{newProject.save}"/>
                     <p:commandButton id="cancel" action="#{newProject.reset}" onclick="PF('newProj').hide()"
                                      type="reset" value="Cancel"/>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="ui-grid-row">
                         <div class="ui-grid-col-12">
-                            <p:commandButton id="saveTask" value="Save" update="@form growl" process="@form"
+                            <p:commandButton id="saveTask" value="Save" update="@form growl projects" process="@form"
                                              action="#{newTask.save}"/>
                             <p:commandButton id="cancel-task" actionListener="#{newTask.reset}"
                                              onclick="PF('newTask').hide()"

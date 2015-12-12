@@ -6,7 +6,7 @@ package ch.vilalde.tracker.web.domain;
 public class Task {
 
     private String title;
-    private int effortEstimated = 1;
+    private Integer effortEstimated = 1;
     private int effortSpent = 0;
     private String priority = "Medium";
     private String description;
@@ -34,7 +34,7 @@ public class Task {
         return effortEstimated;
     }
 
-    public void setEffortEstimated(int effortEstimated) {
+    public void setEffortEstimated(Integer effortEstimated) {
         this.effortEstimated = effortEstimated;
     }
 
